@@ -1,10 +1,11 @@
 import "./TimeLine.css";
 import TimelineEvent from "./TimelineEvent";
+import Proptypes from "prop-types";
 
 const Timeline = (props) => {
-  const events = props.data.events.map((tEvent) => {
+  const events = props.data.events.map((tEvent, i) => {
     return (
-      <li>
+      <li key={i}>
         <TimelineEvent
           person={tEvent.person}
           status={tEvent.status}
@@ -18,6 +19,10 @@ const Timeline = (props) => {
       <ul>{events}</ul>
     </section>
   );
+};
+
+Timeline.propTypes = {
+  data: Proptypes.array.isRequired,
 };
 
 export default Timeline;
